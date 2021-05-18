@@ -1,19 +1,19 @@
 package Options;
 
+import java.util.stream.IntStream;
+
 import LinearAlgebra.Statistic;
-import RandomEnv.BasicRandomGenerator;
-import RandomEnv.MersenneRandomGenerator;
+import RandomEnv.ParallelRandomGenerator;
 import RandomEnv.RandomGenerator;
 import Stocks.StockProcess;
 
-public class PutOptionImplementation implements PutOption {
-
+public class PutOptionParallel implements PutOption {
 	private double[] simulations;
 	private StockProcess currentStock;
 	private double K;
 	private RandomGenerator generator;
 
-	public PutOptionImplementation(StockProcess stock) {
+	public PutOptionParallel(StockProcess stock) {
 		this.currentStock = stock;
 	}
 
@@ -21,22 +21,13 @@ public class PutOptionImplementation implements PutOption {
 	public void simulate(double maturity, double discountFactor, 
 			int numberOfSimulations, long seed, String randomType) {
 		simulations  = new double[numberOfSimulations];
-		if(randomType == "lcg") {
-			generator = new BasicRandomGenerator(seed);
-		} else {
-			generator = new MersenneRandomGenerator(seed);
-		}
+		generator    = new ParallelRandomGenerator();
 		double sqrtMaturity = Math.sqrt(maturity);
-		for (int w = 0; w < numberOfSimulations; w++) {
-			simulations[w] = 
-					Math.max(K - currentStock.getValue(sqrtMaturity, generator), 0.0)*discountFactor;
-		}
-		/*
+		
 		 IntStream.range(0, numberOfSimulations).parallel().forEach(w -> {
 			simulations[w] = 
 					Math.max(K - currentStock.getValue(sqrtMaturity, generator), 0.0)*discountFactor;
 		});
-		 */
 	}
 
 	@Override

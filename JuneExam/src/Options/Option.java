@@ -17,7 +17,7 @@ public interface Option {
 	 * @param seeds of randomGenerator
 	 */
 	public void simulate(double maturity, double discountFactor,
-			int numberOfSimulations, long seeds);
+			int numberOfSimulations, long seeds, String randomType);
 	
 	/**
 	 * Get MonteCarloValue of the option

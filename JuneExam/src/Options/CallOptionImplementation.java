@@ -2,6 +2,7 @@ package Options;
 
 import LinearAlgebra.Statistic;
 import RandomEnv.BasicRandomGenerator;
+import RandomEnv.MersenneRandomGenerator;
 import RandomEnv.RandomGenerator;
 import Stocks.StockProcess;
 
@@ -18,9 +19,13 @@ public class CallOptionImplementation implements CallOption {
 
 	@Override
 	public void simulate(double maturity, double discountFactor, 
-			int numberOfSimulations, long seed) {
+			int numberOfSimulations, long seed, String randomType) {
 		simulations  = new double[numberOfSimulations];
-		generator = new BasicRandomGenerator(seed);
+		if(randomType == "lcg") {
+			generator = new BasicRandomGenerator(seed);
+		} else {
+			generator = new MersenneRandomGenerator(seed);
+		}
 		double sqrtMaturity = Math.sqrt(maturity);
 		for (int w = 0; w < numberOfSimulations; w++) {
 			simulations[w] = 
