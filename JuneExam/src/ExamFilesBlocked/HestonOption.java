@@ -15,7 +15,7 @@ public class HestonOption {
 		/*
 		 * General parameter
 		 */
-		double s0  = 1.0;
+		double s0  = 1.00;
 		double rfr = 0.01;
 		double vol = 0.0635; //eta
 		double rho = 0.2125;

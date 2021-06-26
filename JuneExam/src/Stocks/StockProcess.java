@@ -42,5 +42,19 @@ public interface StockProcess {
 	 * @return S <sub> maturity </sub>
 	 */
 	public double getValue(double sqrtMaturity, RandomGenerator generator);
+	
+	/**
+	 * Get stock volatility
+	 * 
+	 * @return volatility of the stock
+	 */
+	public double getVol();
+	
+	/**
+	 * Get the initial stock value
+	 * 
+	 * @return s0 the initial stock value
+	 */
+	public double getInitial();
 
 }

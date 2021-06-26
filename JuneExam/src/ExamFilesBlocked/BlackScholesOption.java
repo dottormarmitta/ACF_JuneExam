@@ -22,7 +22,7 @@ public class BlackScholesOption {
 		double K   = 1.03;
 		double T   = 1.13;
 		int ns     = 500;
-		long seed  = 61;
+		long seed  = 638204;
 
 		/*
 		 * Stock

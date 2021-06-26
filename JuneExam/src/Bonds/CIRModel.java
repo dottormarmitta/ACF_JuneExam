@@ -2,20 +2,32 @@ package Bonds;
 
 import RandomEnv.RandomGenerator;
 
+/**
+ * Class representing CIR model
+ * 
+ * @version 1.5
+ * @author Guglielmo Del Sarto
+ */
 public class CIRModel {
 
-	private double rho, k, eta, theta,  sqrtTime, initial;
+	private double k, eta, theta,  sqrtTime, initial;
 
-	public CIRModel(double rho, double k, double theta,
+	public CIRModel(double k, double theta,
 			double eta, double sqrtTime, double initial) {
 		this.k = k;
 		this.theta = theta;
 		this.eta = eta;
-		this.rho = rho;
 		this.sqrtTime = sqrtTime;
 		this.initial = initial;
 	}
-
+	
+	/**
+	 * Return integral and final value of a CIR process
+	 * 
+	 * @param ns the number of subdivisions of [0, T]
+	 * @param generator a RandomGenerator
+	 * @return array [terminalVol, integralVol]
+	 */
 	public double[] getIntegralVol(int ns, RandomGenerator generator) {
 		double integral = 0.0;
 		double prevVol = initial;
@@ -28,12 +40,6 @@ public class CIRModel {
 			currentVol = prevVol + k*(theta - prevVol)*dt + eta*Math.sqrt(prevVol*dt)*correlated2;
 			integral += dt*((currentVol+prevVol)*0.5);
 			prevVol = currentVol;
-			/*
-			System.out.println("i....: " + i);
-			System.out.println("dt...: " + dt);
-			System.out.println("cT...: " + i*dt);
-			System.out.println();
-			*/
 		}
 		return new double[] {currentVol, integral};
 	}

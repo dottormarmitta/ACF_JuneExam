@@ -15,6 +15,7 @@ public interface Option {
 	 * @param discountFactor P(0, T)
 	 * @param numberOfSimulations to perform
 	 * @param seeds of randomGenerator
+	 * @param randomType either "mt" for Mersenne of "lcg"
 	 */
 	public void simulate(double maturity, double discountFactor,
 			int numberOfSimulations, long seeds, String randomType);

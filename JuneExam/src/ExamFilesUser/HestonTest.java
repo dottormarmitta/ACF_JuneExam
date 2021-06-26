@@ -34,7 +34,7 @@ public class HestonTest {
 		double eta = 0.010;
 		double K   = 1.03;
 		double T   = 2.0;
-		int ns     = 50;
+		int ns     = 5000;
 		long seed  = 4903;
 		double analytic = 0.0;
 		int vt = 0;
@@ -130,7 +130,7 @@ public class HestonTest {
 			time[i] = - startTime + endTime;
 			values[i] = myOpt.getMonteCarloValue();
 			error[i]  = myOpt.getMonteCarloError(values[i]);
-			ns *= 100;
+			ns *= 10;
 		}
 
 		/*

@@ -6,6 +6,13 @@ import RandomEnv.MersenneRandomGenerator;
 import RandomEnv.RandomGenerator;
 import Stocks.StockProcess;
 
+/**
+ * This class implements a put option
+ * PayOff<sub> T </sub> = max(K - S<sub> T </sub>, 0)  
+ * 
+ * @version 1.5
+ * @author Guglielmo Del Sarto
+ */
 public class PutOptionImplementation implements PutOption {
 
 	private double[] simulations;
@@ -20,6 +27,7 @@ public class PutOptionImplementation implements PutOption {
 	@Override
 	public void simulate(double maturity, double discountFactor, 
 			int numberOfSimulations, long seed, String randomType) {
+		
 		simulations  = new double[numberOfSimulations];
 		if(randomType == "lcg") {
 			generator = new BasicRandomGenerator(seed);
@@ -31,12 +39,7 @@ public class PutOptionImplementation implements PutOption {
 			simulations[w] = 
 					Math.max(K - currentStock.getValue(sqrtMaturity, generator), 0.0)*discountFactor;
 		}
-		/*
-		 IntStream.range(0, numberOfSimulations).parallel().forEach(w -> {
-			simulations[w] = 
-					Math.max(K - currentStock.getValue(sqrtMaturity, generator), 0.0)*discountFactor;
-		});
-		 */
+		
 	}
 
 	@Override

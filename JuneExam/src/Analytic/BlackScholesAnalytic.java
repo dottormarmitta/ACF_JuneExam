@@ -49,7 +49,7 @@ public class BlackScholesAnalytic {
 	}
 	
 	/*
-	 * Taken from the internet
+	 * Taken from the Internet
 	 */
 	private static double CNDF(double x) {
 	    int neg = (x < 0d) ? 1 : 0;

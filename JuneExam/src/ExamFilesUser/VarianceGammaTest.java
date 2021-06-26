@@ -16,7 +16,7 @@ public class VarianceGammaTest {
 
 	public static void main(String[] args) throws Exception {
 		System.out.println("Hello!!!! I am bot-pricer \uD83E\uDD16. I will help you  pricing  an option.");
-		System.out.println("This program is intended to test my ability to reproduce BS model!");
+		System.out.println("This program is intended to test my ability to reproduce VG model!");
 		System.out.println();
 		
 		/*
@@ -29,7 +29,7 @@ public class VarianceGammaTest {
 		double nu;
 		double K;
 		double T;
-		int ns     = 50;
+		int ns     = 500;
 		long seed  = 4903;
 		double analytic;
 		double analyticError = 0.0;
@@ -116,7 +116,7 @@ public class VarianceGammaTest {
 			time[i] = - startTime + endTime;
 			values[i] = myOpt.getMonteCarloValue();
 			error[i]  = myOpt.getMonteCarloError(values[i]);
-			ns *= 100;
+			ns *= 10;
 		}
 
 		/*

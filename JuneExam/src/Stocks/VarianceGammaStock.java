@@ -46,4 +46,14 @@ public class VarianceGammaStock implements StockProcess {
 		return initial*Math.exp((rfr + omega)*sqrtMaturity*sqrtMaturity + x);
 	}
 
+	@Override
+	public double getVol() {
+		return this.vol;
+	}
+
+	@Override
+	public double getInitial() {
+		return this.initial;
+	}
+
 }

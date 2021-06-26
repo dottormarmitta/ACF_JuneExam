@@ -40,5 +40,15 @@ public class BlackScholesStock implements StockProcess {
 		return initial*Math.exp((rfr - 0.5*vol*vol)*sqrtMaturity*sqrtMaturity + 
 				vol*generator.nextGaussian(sqrtMaturity));
 	}
+	
+	@Override
+	public double getVol() {
+		return this.vol;
+	}
+
+	@Override
+	public double getInitial() {
+		return this.initial;
+	}
 
 }

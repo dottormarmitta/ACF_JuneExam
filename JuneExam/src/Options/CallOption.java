@@ -2,7 +2,7 @@ package Options;
 
 /**
  * This interface is an abstraction for a call option
- * PayOff<sub> T </sub> = max(S<sub> T </sub> - k, 0)  
+ * PayOff<sub> T </sub> = max(S<sub> T </sub> - K, 0)  
  * 
  * @version 1.5
  * @author Guglielmo Del Sarto
